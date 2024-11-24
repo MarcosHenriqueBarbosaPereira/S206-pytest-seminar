@@ -1,0 +1,50 @@
+[tool.poetry]
+name = "s206-seminar"
+version = "0.1.0"
+description = ""
+authors = ["MarcosHenriqueBarbosaPereira <marcos.h@gec.inatel.br>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.3"
+pytest-flask = "^1.3.0"
+pytest-cov = "^6.0.0"
+pytest-html = "^4.1.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 120
+target-version = ["py312"]
+exclude = '''
+/(
+    \.git
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | venv
+    | .venv
+    | _build
+    | build
+    | buck-out
+    | \.flake8
+    | \.github/workflows/pipeline\.yml
+)/
+'''
+
+[tool.isort]
+profile = "black"
+
+[tool.pytest.ini_options]
+pythonpath = "."
+addopts = "--ignore=tasks --doctest-modules"
+
+[tool.taskipy.tasks]
+lint = "black --check --diff . && isort --check --diff ."
+lint-fix = "black . && isort ."
+test = "pytest -s -x --cov=s206_seminar -vv"
