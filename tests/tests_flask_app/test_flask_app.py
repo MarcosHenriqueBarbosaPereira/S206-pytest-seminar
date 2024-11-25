@@ -26,8 +26,8 @@ class TestFlaskApp:
         data = response.get_json()
         assert data["error"] == "The 'title' field is required and cannot be empty."
 
-    def test_add_task_without_title(self):
-        response = self.client.post("/tasks", json={})
+    def test_add_task_with_empty_title(self):
+        response = self.client.post("/tasks", json={"title": ""})
         assert response.status_code == 400
         data = response.get_json()
         assert data["error"] == "The 'title' field is required and cannot be empty."
