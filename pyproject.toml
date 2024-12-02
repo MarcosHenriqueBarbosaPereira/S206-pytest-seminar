@@ -53,4 +53,4 @@ addopts = "--ignore=tasks --doctest-modules"
 [tool.taskipy.tasks]
 lint = "black --check --diff . && isort --check --diff ."
 lint-fix = "black . && isort ."
-test = "pytest -s -x --cov=s206_seminar -vv"
+test = "pytest -s -x --cov=s206_seminar --cov-report=term-missing --cov-report=xml --cov-report=html --html=report.html --self-contained-html -vv"

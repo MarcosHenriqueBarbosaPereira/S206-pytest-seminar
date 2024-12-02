@@ -50,6 +50,12 @@ class TestFlaskApp:
         data = response.get_json()
         assert data["status"] == "completed"
 
+    def test_update_task_not_found(self):
+        response = self.client.put("/tasks/999", json={"status": "completed"})
+        assert response.status_code == 404
+        data = response.get_json()
+        assert data["error"] == "Task not found"
+
     def test_delete_task(self):
         self.client.post("/tasks", json={"title": "Task 1"})
         response = self.client.delete("/tasks/1")
