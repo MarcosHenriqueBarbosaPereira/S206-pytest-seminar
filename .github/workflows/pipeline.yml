@@ -74,6 +74,12 @@ jobs:
             name: test-html-coverage
             path: htmlcov/
 
+        - name: Upload html report artifacts
+          uses: actions/upload-artifact@v4
+          with:
+            name: test-html-report
+            path: ./report.html
+
     build:
       needs: [test]
       runs-on: ubuntu-latest
