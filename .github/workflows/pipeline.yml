@@ -3,8 +3,8 @@ on:
       branches:
         - main
     push:
-      tags:
-        - 'v*.*.*'
+      branches:
+        - main
   
 permissions:
     contents: read
@@ -17,7 +17,7 @@ concurrency:
   
 jobs:
     lint:
-      name: "Hazbin Hotel Lint"
+      name: "S206 Seminar Lint"
       runs-on: ${{ matrix.os }}
   
       strategy:
@@ -38,9 +38,10 @@ jobs:
   
         - name: Install pre-commit and run hooks
           run: sh .github/scripts/pre-commit-script.sh
+
     test:
       needs: [lint]
-      name: "Hazbin Hotel Test"
+      name: "S206 Seminar Test"
       runs-on: ${{ matrix.os }}
   
       strategy:
@@ -77,7 +78,7 @@ jobs:
       if: startsWith(github.ref, 'refs/tags/v')
       needs: [test]
       runs-on: ubuntu-latest
-      name: Hazbin Hotel Build Package
+      name: S206 Seminar Build Package
       
       steps:
         - name: Checkout
