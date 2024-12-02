@@ -75,7 +75,6 @@ jobs:
             path: htmlcov/
 
     build:
-      if: startsWith(github.ref, 'refs/tags/v')
       needs: [test]
       runs-on: ubuntu-latest
       name: S206 Seminar Build Package
