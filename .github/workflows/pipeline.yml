@@ -63,10 +63,10 @@ jobs:
         - name: Run the Tests
           run: poetry run task test --cov-report=xml
   
-        # - name: Upload Cov to CodeCov
-        #   uses: codecov/codecov-action@v4
-        #   with:
-        #     token: ${{ secrets.CODECOV_TOKEN }}
+        - name: Upload Cov to CodeCov
+          uses: codecov/codecov-action@v4
+          with:
+            token: ${{ secrets.CODECOV_TOKEN }}
         
         - name: Upload html coverage artifacts
           uses: actions/upload-artifact@v4
