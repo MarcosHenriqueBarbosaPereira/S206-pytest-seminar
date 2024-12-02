@@ -1,5 +1,7 @@
 import pytest
+
 from s206_seminar.src.inventory_app.inventory import Inventory
+
 
 class TestInventoryIntegration:
 

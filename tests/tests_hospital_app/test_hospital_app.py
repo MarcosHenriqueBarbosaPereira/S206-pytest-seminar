@@ -1,7 +1,7 @@
 import pytest
 
-from s206_seminar.src.hospital_app.patient import Patient
 from s206_seminar.src.hospital_app.doctor import Doctor
+from s206_seminar.src.hospital_app.patient import Patient
 
 
 class TestHospitalApp:
@@ -17,9 +17,9 @@ class TestHospitalApp:
         self.doctor1.add_patient(self.patient1)
         self.doctor1.start_consulting(self.patient1)
 
-        assert self.patient1.consulting == True
-        assert self.doctor1.consulting == True
-        assert self.doctor1.current_patient == self.patient1
+        assert self.patient1.consulting is True
+        assert self.doctor1.consulting is True
+        assert self.doctor1.current_patient is self.patient1
 
     def test_start_consulting_doctor_not_working(self):
         self.doctor1.add_patient(self.patient1)
@@ -58,9 +58,9 @@ class TestHospitalApp:
         self.doctor1.start_consulting(self.patient1)
         self.doctor1.stop_consulting()
 
-        assert self.patient1.consulting == False
-        assert self.doctor1.consulting == False
-        assert self.doctor1.current_patient == None
+        assert self.patient1.consulting is False
+        assert self.doctor1.consulting is False
+        assert self.doctor1.current_patient is None
 
     def test_stop_consulting_doctor_not_consulting(self):
         self.doctor1.start_working()
@@ -80,7 +80,6 @@ class TestHospitalApp:
 
     def test_start_and_stop_working(self):
         self.doctor1.start_working()
-        assert self.doctor1.working == True
+        assert self.doctor1.working is True
         self.doctor1.stop_working()
-        assert self.doctor1.working == False
-    
+        assert self.doctor1.working is False

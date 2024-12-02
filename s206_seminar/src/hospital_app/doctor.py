@@ -1,5 +1,6 @@
 from s206_seminar.src.hospital_app.patient import Patient
 
+
 class Doctor:
 
     def __init__(self, name):
@@ -26,9 +27,9 @@ class Doctor:
             raise ValueError("The doctor is already consulting a patient.")
         elif patient.consulting:
             raise ValueError("The patient is already consulting a doctor.")
-        elif not patient in self.patients:
+        elif patient not in self.patients:
             raise ValueError("The patient is not in the doctor's list of patients.")
-        
+
         self.consulting = True
         self.current_patient = patient
         patient.start_consulting()
@@ -44,5 +45,3 @@ class Doctor:
         if patient in self.patients:
             raise ValueError("The patient is already in the doctor's list of patients.")
         self.patients.append(patient)
-
-    

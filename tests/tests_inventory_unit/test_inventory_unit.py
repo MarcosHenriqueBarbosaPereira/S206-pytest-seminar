@@ -1,4 +1,5 @@
 import pytest
+
 from s206_seminar.src.inventory_app.inventory import Inventory
 
 
@@ -86,4 +87,3 @@ class TestInventoryUnit:
         with pytest.raises(KeyError) as excinfo:
             self.inv.consume_item("Life Potion")
         assert excinfo.value.args[0] == "Item not found in the inventory."
-        
